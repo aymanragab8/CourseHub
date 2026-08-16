@@ -670,37 +670,38 @@ docs/screenshots/
 
 ## 📚 Courses
 
-![Courses Page](screenshots/Courses Page.png)
+![Courses Page](screenshots/Courses-Page.png)
+![Courses Page](screenshots/Courses-Page2.png)
 
 ---
 
 ## 📖 Course Details
 
-![Course Details](screenshots/Course Details.png)
+![Course Details](screenshots/Course-Details.png)
 
 ---
 
 ## 🛡️ Admin Dashboard
 
-![Admin Dashboard](screenshots/Admin Dashboard.png)
+![Admin Dashboard](screenshots/Admin-Dashboard.png)
 
 ---
 
 ## 👨‍🏫 Instructor Dashboard
 
-![Instructor Dashboard](screenshots/Instructor Dashboard.png)
+![Instructor Dashboard](screenshots/Instructor-Dashboard.png)
 
 ---
 
 ## 👨‍🎓 Student Dashboard
 
-![Student Dashboard](screenshots/Student Dashboard.png)
+![Student Dashboard](screenshots/Student-Dashboard.png)
 
 ---
 
 ## ➕ Create Course
 
-![Create Course](screenshots/Create Course.png)
+![Create Course](screenshots/Create-Course.png)
 
 ---
 

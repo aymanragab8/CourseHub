@@ -1,15 +1,3 @@
 <Solution>
-  <Folder Name="/docs/" />
-  <Folder Name="/docs/screenshots/">
-    <File Path="C:/Users/ayman/OneDrive/سطح المكتب/CourseHub/Admin Dashboard.png" />
-    <File Path="C:/Users/ayman/OneDrive/سطح المكتب/CourseHub/Course Details.png" />
-    <File Path="C:/Users/ayman/OneDrive/سطح المكتب/CourseHub/Courses Page.png" />
-    <File Path="C:/Users/ayman/OneDrive/سطح المكتب/CourseHub/Courses Page2.png" />
-    <File Path="C:/Users/ayman/OneDrive/سطح المكتب/CourseHub/Home.png" />
-    <File Path="C:/Users/ayman/OneDrive/سطح المكتب/CourseHub/Home2.png" />
-    <File Path="C:/Users/ayman/OneDrive/سطح المكتب/CourseHub/Instructor Dashboard.png" />
-    <File Path="C:/Users/ayman/OneDrive/سطح المكتب/CourseHub/Login.png" />
-    <File Path="C:/Users/ayman/OneDrive/سطح المكتب/CourseHub/Register.png" />
-  </Folder>
   <Project Path="CourseHub.csproj" />
 </Solution>
