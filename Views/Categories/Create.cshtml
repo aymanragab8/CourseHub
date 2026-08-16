@@ -1,0 +1,45 @@
+﻿@model CourseHub.ViewModels.CreateCategoryViewModel
+
+@{
+    ViewData["Title"] = "Create Category";
+}
+
+<div class="row justify-content-center py-5">
+
+    <div class="col-md-6">
+
+        <div class="coursehub-content-card">
+
+            <div class="card-body p-4">
+
+                <h3 class="coursehub-admin-title mb-4">Create Category</h3>
+
+                <form asp-action="Create" method="post">
+
+                    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                    <div class="mb-3">
+
+                        <label asp-for="Name" class="form-label"></label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Create</button>
+                    <a asp-action="Index" class="btn btn-outline-secondary">Cancel</a>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
+}

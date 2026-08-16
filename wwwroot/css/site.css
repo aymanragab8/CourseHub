@@ -1,0 +1,791 @@
+/* =========================================================
+   CourseHub - Global Theme
+========================================================= */
+
+:root {
+    --coursehub-primary: #2563eb;
+    --coursehub-primary-dark: #1d4ed8;
+    --coursehub-primary-light: #eff6ff;
+    --coursehub-dark: #0f172a;
+    --coursehub-text: #1e293b;
+    --coursehub-muted: #64748b;
+    --coursehub-bg: #e8edf3;
+    --coursehub-card: #ffffff;
+    --coursehub-border: #e2e8f0;
+    --coursehub-success: #16a34a;
+    --coursehub-danger: #dc2626;
+    --coursehub-radius: 12px;
+}
+
+
+/* =========================================================
+   Base + Sticky Footer Layout
+========================================================= */
+
+html {
+    font-size: 14px;
+    position: relative;
+    min-height: 100%;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: var(--coursehub-bg);
+    color: var(--coursehub-text);
+}
+
+    /* الجزء اللي فيه الـ container والـ main - يكبر يملأ المساحة المتاحة */
+    body > div.container {
+        flex: 1 0 auto;
+    }
+
+main {
+    background-color: transparent;
+}
+
+
+/* =========================================================
+   Focus
+========================================================= */
+
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus,
+.form-select:focus {
+    box-shadow: 0 0 0 0.15rem #ffffff, 0 0 0 0.3rem rgba(37, 99, 235, 0.35);
+    border-color: var(--coursehub-primary);
+}
+
+
+/* =========================================================
+   Buttons
+========================================================= */
+
+.btn {
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+    .btn:hover {
+        transform: translateY(-1px);
+    }
+
+.btn-primary {
+    background-color: var(--coursehub-primary);
+    border-color: var(--coursehub-primary);
+}
+
+    .btn-primary:hover,
+    .btn-primary:focus {
+        background-color: var(--coursehub-primary-dark);
+        border-color: var(--coursehub-primary-dark);
+    }
+
+
+/* =========================================================
+   Forms
+========================================================= */
+
+.form-control,
+.form-select {
+    border: 1px solid var(--coursehub-border);
+    border-radius: 8px;
+    padding: 0.65rem 0.8rem;
+    transition: all 0.2s ease;
+}
+
+    .form-control:focus,
+    .form-select:focus {
+        border-color: var(--coursehub-primary);
+    }
+
+.form-floating > .form-control-plaintext::placeholder,
+.form-floating > .form-control::placeholder {
+    color: var(--bs-secondary-color);
+    text-align: end;
+}
+
+.form-floating > .form-control-plaintext:focus::placeholder,
+.form-floating > .form-control:focus::placeholder {
+    text-align: start;
+}
+
+
+/* =========================================================
+   Cards
+========================================================= */
+
+.card {
+    background-color: var(--coursehub-card);
+    border: 1px solid var(--coursehub-border);
+    border-radius: var(--coursehub-radius);
+    transition: all 0.2s ease;
+}
+
+    .card:hover {
+        box-shadow: 0 8px 25px rgba(15, 23, 42, 0.08);
+    }
+
+
+/* =========================================================
+   Course Cards
+========================================================= */
+
+.course-card {
+    overflow: hidden;
+}
+
+    .course-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+
+    .course-card .card-body {
+        padding: 1.25rem;
+    }
+
+    .course-card .card-title {
+        color: var(--coursehub-dark);
+        font-weight: 600;
+    }
+
+    .course-card .course-price {
+        color: var(--coursehub-primary);
+        font-weight: 700;
+        font-size: 1.1rem;
+    }
+
+
+/* =========================================================
+   Links
+========================================================= */
+
+a {
+    color: var(--coursehub-primary);
+    text-decoration: none;
+}
+
+    a:hover {
+        color: var(--coursehub-primary-dark);
+    }
+
+
+/* =========================================================
+   Alerts
+========================================================= */
+
+.alert {
+    border-radius: 10px;
+    border: none;
+}
+
+
+/* =========================================================
+   Badges
+========================================================= */
+
+.badge {
+    border-radius: 6px;
+    font-weight: 500;
+}
+
+
+/* =========================================================
+   Tables
+========================================================= */
+
+.table {
+    background-color: var(--coursehub-card);
+}
+
+    .table thead th {
+        color: var(--coursehub-dark);
+        font-weight: 600;
+        border-bottom: 2px solid var(--coursehub-border);
+    }
+
+    .table td {
+        vertical-align: middle;
+        border-color: var(--coursehub-border);
+    }
+
+
+/* =========================================================
+   Pagination
+========================================================= */
+
+.pagination .page-link {
+    color: var(--coursehub-primary);
+    border-color: var(--coursehub-border);
+}
+
+.pagination .page-link:hover {
+    background-color: var(--coursehub-primary-light);
+    color: var(--coursehub-primary-dark);
+}
+
+.pagination .page-item.active .page-link {
+    background-color: var(--coursehub-primary);
+    border-color: var(--coursehub-primary);
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   Headings
+========================================================= */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--coursehub-dark);
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   Text
+========================================================= */
+
+.text-muted {
+    color: var(--coursehub-muted) !important;
+}
+
+
+/* =========================================================
+   CourseHub Navbar
+   لا نغير شكل الهيدر
+========================================================= */
+
+.coursehub-navbar {
+    background: var(--coursehub-dark);
+    min-height: 70px;
+    border: none !important;
+}
+
+.coursehub-logo {
+    color: #ffffff !important;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+    .coursehub-logo:hover {
+        color: #dbeafe !important;
+    }
+
+.coursehub-navbar .nav-link {
+    color: #cbd5e1;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+    .coursehub-navbar .nav-link:hover {
+        color: #ffffff;
+    }
+
+.coursehub-dashboard-btn {
+    background: var(--coursehub-primary);
+    border: 1px solid var(--coursehub-primary);
+    color: #ffffff;
+    font-weight: 500;
+    border-radius: 8px;
+    padding: 0.5rem 0.9rem;
+}
+
+    .coursehub-dashboard-btn:hover {
+        background: var(--coursehub-primary-dark);
+        border-color: var(--coursehub-primary-dark);
+        color: #ffffff;
+    }
+
+.coursehub-navbar .bi-person-circle {
+    color: #93c5fd;
+}
+
+.coursehub-navbar .dropdown-menu {
+    margin-top: 10px;
+    border: 1px solid var(--coursehub-border);
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.15);
+}
+
+.coursehub-navbar .dropdown-item {
+    padding: 0.65rem 1rem;
+}
+
+    .coursehub-navbar .dropdown-item:hover {
+        background: var(--coursehub-primary-light);
+    }
+
+.coursehub-navbar .navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.25);
+}
+
+    .coursehub-navbar .navbar-toggler:focus {
+        box-shadow: 0 0 0 0.2rem rgba(147, 197, 253, 0.25);
+    }
+
+
+/* =========================================================
+   CourseHub Footer
+   لا نغير شكل الفوتر
+========================================================= */
+
+.coursehub-footer {
+    background: var(--coursehub-dark);
+    padding: 28px 0;
+    margin-top: 60px;
+    flex-shrink: 0;
+}
+
+.coursehub-footer-logo {
+    color: #ffffff;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.coursehub-footer-text {
+    color: #94a3b8;
+    font-size: 0.9rem;
+}
+
+
+/* =========================================================
+   CourseHub Home Page - HERO
+========================================================= */
+
+.coursehub-hero {
+    background: linear-gradient(180deg, #eef2f7 0%, #e8edf3 100%);
+    padding: 70px 0;
+    overflow: hidden;
+}
+
+.min-vh-75 {
+    min-height: 70vh;
+}
+
+.coursehub-hero-badge {
+    display: inline-block;
+    background: #dbeafe;
+    color: var(--coursehub-primary);
+    padding: 8px 14px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.coursehub-hero-title {
+    color: var(--coursehub-dark);
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -2px;
+    max-width: 700px;
+}
+
+    .coursehub-hero-title span {
+        color: var(--coursehub-primary);
+    }
+
+.coursehub-hero-description {
+    color: var(--coursehub-muted);
+    font-size: 1.15rem;
+    line-height: 1.8;
+    max-width: 620px;
+    margin-top: 20px;
+}
+
+.coursehub-hero-card {
+    background: #ffffff;
+    border: 1px solid var(--coursehub-border);
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(15, 23, 42, 0.10);
+    position: relative;
+}
+
+.coursehub-hero-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    background: var(--coursehub-primary-light);
+    color: var(--coursehub-primary);
+    font-size: 2.2rem;
+}
+
+.coursehub-hero-card h3 {
+    margin-bottom: 15px;
+}
+
+.coursehub-hero-card p {
+    color: var(--coursehub-muted);
+    line-height: 1.7;
+    margin-bottom: 30px;
+}
+
+.coursehub-hero-stats {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 25px;
+    border-top: 1px solid var(--coursehub-border);
+}
+
+    .coursehub-hero-stats div {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .coursehub-hero-stats strong {
+        color: var(--coursehub-primary);
+        font-size: 1.4rem;
+    }
+
+    .coursehub-hero-stats span {
+        color: var(--coursehub-muted);
+        font-size: 0.85rem;
+    }
+
+
+/* =========================================================
+   FEATURES
+========================================================= */
+
+.coursehub-features {
+    padding: 90px 0;
+    background: var(--coursehub-bg);
+}
+
+.coursehub-section-label {
+    color: var(--coursehub-primary);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.coursehub-section-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--coursehub-dark);
+}
+
+.coursehub-section-description {
+    color: var(--coursehub-muted);
+    max-width: 600px;
+    margin: 15px auto 0;
+    line-height: 1.7;
+}
+
+.coursehub-feature-card {
+    height: 100%;
+    padding: 35px 30px;
+    background: #ffffff;
+    border: 1px solid var(--coursehub-border);
+    border-radius: 15px;
+    text-align: center;
+    transition: all 0.25s ease;
+}
+
+    .coursehub-feature-card:hover {
+        transform: translateY(-6px);
+        border-color: #bfdbfe;
+        box-shadow: 0 15px 35px rgba(15, 23, 42, 0.08);
+    }
+
+.coursehub-feature-icon {
+    width: 65px;
+    height: 65px;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    background: var(--coursehub-primary-light);
+    color: var(--coursehub-primary);
+    font-size: 1.7rem;
+}
+
+.coursehub-feature-card h4 {
+    margin-bottom: 12px;
+}
+
+.coursehub-feature-card p {
+    color: var(--coursehub-muted);
+    line-height: 1.7;
+    margin-bottom: 0;
+}
+
+
+/* =========================================================
+   CTA
+========================================================= */
+
+.coursehub-cta {
+    padding: 80px 0;
+    background: var(--coursehub-dark);
+}
+
+.coursehub-cta-content {
+    max-width: 700px;
+    margin: auto;
+}
+
+.coursehub-cta-icon {
+    color: #facc15;
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+}
+
+.coursehub-cta h2 {
+    color: #ffffff;
+    font-size: 2.3rem;
+    margin-bottom: 15px;
+}
+
+.coursehub-cta p {
+    color: #94a3b8;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 30px;
+}
+
+.coursehub-cta .btn-light {
+    color: var(--coursehub-dark);
+    font-weight: 600;
+    border-radius: 8px;
+}
+
+    .coursehub-cta .btn-light:hover {
+        background: #dbeafe;
+        color: var(--coursehub-dark);
+    }
+
+
+/* =========================================================
+   Error Page
+========================================================= */
+
+.coursehub-error-page {
+    max-width: 600px;
+    margin: 80px auto;
+    padding: 40px;
+}
+
+.coursehub-error-icon {
+    font-size: 3.5rem;
+    color: var(--coursehub-danger);
+    margin-bottom: 20px;
+    display: block;
+}
+
+.coursehub-error-title {
+    color: var(--coursehub-dark);
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.coursehub-error-text {
+    color: var(--coursehub-muted);
+    font-size: 1.05rem;
+}
+
+.coursehub-error-requestid {
+    color: var(--coursehub-muted);
+    font-size: 0.9rem;
+}
+
+.coursehub-error-dev-note {
+    background: #fff7ed;
+    border: 1px solid #fed7aa;
+    border-radius: var(--coursehub-radius);
+    padding: 20px;
+    text-align: start;
+}
+
+
+/* =========================================================
+   Static Pages (Privacy, Terms, etc.)
+========================================================= */
+
+.coursehub-static-page {
+    max-width: 800px;
+    margin: 60px auto;
+    padding: 0 15px;
+}
+
+.coursehub-static-card {
+    background: var(--coursehub-card);
+    border: 1px solid var(--coursehub-border);
+    border-radius: var(--coursehub-radius);
+    padding: 30px;
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   Auth Pages (Login, Register, Access Denied)
+========================================================= */
+
+.coursehub-auth-card,
+.coursehub-message-card {
+    background: var(--coursehub-card);
+    border: 1px solid var(--coursehub-border);
+    border-radius: var(--coursehub-radius);
+    box-shadow: 0 8px 25px rgba(15, 23, 42, 0.06);
+}
+
+.coursehub-auth-title {
+    color: var(--coursehub-dark);
+    font-weight: 700;
+}
+
+.coursehub-message-icon {
+    font-size: 2.8rem;
+    color: var(--coursehub-danger);
+}
+
+
+/* =========================================================
+   Admin Pages - Shared
+========================================================= */
+
+.coursehub-admin-title {
+    color: var(--coursehub-dark);
+    font-weight: 700;
+}
+
+.coursehub-stat-card,
+.coursehub-content-card {
+    background: var(--coursehub-card);
+    border: 1px solid var(--coursehub-border);
+    border-radius: var(--coursehub-radius);
+    box-shadow: 0 8px 25px rgba(15, 23, 42, 0.06);
+}
+
+.coursehub-stat-icon {
+    font-size: 2rem;
+    color: var(--coursehub-primary);
+}
+
+.coursehub-badge-student {
+    background: var(--coursehub-primary-light);
+    color: var(--coursehub-primary);
+}
+
+.coursehub-badge-instructor {
+    background: #dcfce7;
+    color: var(--coursehub-success);
+}
+
+.coursehub-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    flex-shrink: 0;
+}
+
+.coursehub-avatar-student {
+    background: var(--coursehub-primary);
+}
+
+.coursehub-avatar-instructor {
+    background: var(--coursehub-success);
+}
+
+.coursehub-content-card .table thead th {
+    background: var(--coursehub-primary-light);
+    border-bottom: none;
+}
+
+.coursehub-empty-state i,
+i.coursehub-empty-state {
+    color: var(--coursehub-muted);
+}
+
+.coursehub-danger-card {
+    border-color: var(--coursehub-danger) !important;
+}
+
+
+/* =========================================================
+   Responsive
+========================================================= */
+
+@media (max-width: 991px) {
+
+    .coursehub-hero {
+        padding: 60px 0;
+    }
+
+    .coursehub-hero-card {
+        max-width: 500px;
+        margin: auto;
+    }
+}
+
+
+@media (max-width: 575px) {
+
+    .coursehub-hero {
+        padding: 45px 0;
+    }
+
+    .coursehub-hero-title {
+        font-size: 2.7rem;
+        letter-spacing: -1px;
+    }
+
+    .coursehub-hero-description {
+        font-size: 1rem;
+    }
+
+    .coursehub-hero-card {
+        padding: 30px 20px;
+    }
+
+    .coursehub-features {
+        padding: 60px 0;
+    }
+
+    .coursehub-section-title {
+        font-size: 1.8rem;
+    }
+
+    .coursehub-cta {
+        padding: 60px 20px;
+    }
+
+        .coursehub-cta h2 {
+            font-size: 1.9rem;
+        }
+}

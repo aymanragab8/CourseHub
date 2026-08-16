@@ -1,0 +1,448 @@
+﻿@model IEnumerable<CourseHub.Models.Course>
+
+@{
+    ViewData["Title"] = "Courses";
+
+    int currentPage = ViewBag.CurrentPage ?? 1;
+    int totalPages = ViewBag.TotalPages ?? 0;
+    int totalCourses = ViewBag.TotalCourses ?? 0;
+
+    string? search = ViewBag.Search as string;
+    int? categoryId = ViewBag.CategoryId as int?;
+}
+
+<div class="container py-5">
+
+    <!-- ========================= -->
+    <!-- Header -->
+    <!-- ========================= -->
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <div>
+
+            <h1 class="coursehub-admin-title mb-2">
+                Explore Courses
+            </h1>
+
+            <p class="text-muted mb-0">
+                Learn from our available courses.
+            </p>
+
+        </div>
+
+
+        @if (User.IsInRole("Admin") || User.IsInRole("Instructor"))
+        {
+            <a asp-controller="Courses"
+               asp-action="Create"
+               class="btn btn-primary">
+                <i class="bi bi-plus-circle me-1"></i>
+                Create Course
+            </a>
+        }
+
+    </div>
+
+
+    <!-- ========================= -->
+    <!-- Search & Filter -->
+    <!-- ========================= -->
+
+    <div class="coursehub-content-card mb-4">
+
+        <div class="card-body p-4">
+
+            <form asp-action="Index"
+                  method="get">
+
+                <div class="row g-3">
+
+                    <!-- Search -->
+
+                    <div class="col-md-6">
+
+                        <label class="form-label fw-semibold">
+                            Search Courses
+                        </label>
+
+                        <div class="input-group">
+
+                            <span class="input-group-text">
+                                <i class="bi bi-search"></i>
+                            </span>
+
+                            <input type="text"
+                                   name="search"
+                                   value="@search"
+                                   class="form-control"
+                                   placeholder="Search by title, description or instructor..." />
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Category -->
+
+                    <div class="col-md-4">
+
+                        <label class="form-label fw-semibold">
+                            Category
+                        </label>
+
+                        <select name="categoryId"
+                                class="form-select">
+
+                            <option value="">
+                                All Categories
+                            </option>
+
+                            @foreach (var category in ViewBag.Categories)
+                            {
+                                if (categoryId.HasValue &&
+                                    category.Id == categoryId.Value)
+                                {
+                                    <option value="@category.Id" selected>
+                                        @category.Name
+                                    </option>
+                                }
+                                else
+                                {
+                                    <option value="@category.Id">
+                                        @category.Name
+                                    </option>
+                                }
+                            }
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Search Button -->
+
+                    <div class="col-md-2 d-flex align-items-end">
+
+                        <button type="submit"
+                                class="btn btn-primary w-100">
+
+                            <i class="bi bi-search me-1"></i>
+                            Search
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </form>
+
+
+            <!-- ========================= -->
+            <!-- Clear Filters -->
+            <!-- ========================= -->
+            @if (!string.IsNullOrWhiteSpace(search) ||
+                             categoryId.HasValue)
+            {
+                <div class="mt-3">
+
+                    <a asp-action="Index"
+                       class="btn btn-outline-secondary btn-sm">
+
+                        <i class="bi bi-x-lg me-1"></i>
+                        Clear Filters
+
+                    </a>
+
+                </div>
+            }
+
+        </div>
+
+    </div>
+
+
+    <!-- ========================= -->
+    <!-- Results Info -->
+    <!-- ========================= -->
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+
+        <div class="text-muted">
+
+            @if (!string.IsNullOrWhiteSpace(search))
+            {
+                <span>
+                    Search results for:
+                    <strong class="text-dark">
+                        "@search"
+                    </strong>
+                </span>
+            }
+            else
+            {
+                <span>
+                    Showing available courses
+                </span>
+            }
+
+        </div>
+
+        <span class="text-muted">
+            @totalCourses course@(totalCourses == 1 ? "" : "s")
+        </span>
+
+    </div>
+
+
+    <!-- ========================= -->
+    <!-- Courses -->
+    <!-- ========================= -->
+    @if (Model != null && Model.Any())
+    {
+        <div class="row g-4">
+
+            @foreach (var course in Model)
+            {
+                <div class="col-md-6 col-lg-4">
+
+                    <div class="card course-card h-100 border-0 shadow-sm">
+
+
+                        <!-- Course Image -->
+                        @{
+                            var imageUrl = string.IsNullOrEmpty(course.ImageUrl)
+                                ? "/images/courses/default-course.jpg"
+                                : course.ImageUrl;
+                        }
+
+                        <img src="@imageUrl"
+                             class="card-img-top"
+                             alt="@course.Title" />
+
+
+                        <!-- Course Body -->
+
+                        <div class="card-body">
+
+                            @if (course.Category != null)
+                            {
+                                <span class="badge bg-primary mb-2">
+                                    @course.Category.Name
+                                </span>
+                            }
+
+
+                            <h5 class="card-title">
+                                @course.Title
+                            </h5>
+
+
+                            @if (!string.IsNullOrEmpty(course.Description))
+                            {
+                                <p class="card-text text-muted">
+
+                                    @(course.Description.Length > 100
+                                        ? course.Description[..100] + "..."
+                                        : course.Description)
+
+                                </p>
+                            }
+
+
+                            <div class="d-flex
+                                justify-content-between
+                                align-items-center
+                                mt-3">
+
+                                <strong class="course-price">
+                                    $@course.Price
+                                </strong>
+
+
+                                @if (course.Instructor != null)
+                                {
+                                    <small class="text-muted">
+
+                                        <i class="bi bi-person me-1"></i>
+
+                                        @course.Instructor.FullName
+
+                                    </small>
+                                }
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Card Footer -->
+
+                        <div class="card-footer bg-white border-0 p-3">
+
+                            <a asp-action="Details"
+                               asp-route-id="@course.Id"
+                               class="btn btn-outline-primary w-100">
+
+                                <i class="bi bi-eye me-1"></i>
+                                View Details
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            }
+
+        </div>
+    }
+    else
+    {
+        <!-- ========================= -->
+        <!-- No Results -->
+        <!-- ========================= -->
+
+        <div class="coursehub-content-card">
+
+            <div class="card-body text-center py-5">
+
+                <i class="bi bi-search fs-1 coursehub-empty-state"></i>
+
+                <h4 class="coursehub-admin-title mt-3">
+                    No courses found
+                </h4>
+
+                <p class="text-muted mb-4">
+                    Try another search term or category.
+                </p>
+
+                <a asp-action="Index"
+                   class="btn btn-outline-primary">
+
+                    View All Courses
+
+                </a>
+
+            </div>
+
+        </div>
+    }
+
+
+    <!-- ========================= -->
+    <!-- Pagination -->
+    <!-- ========================= -->
+    @if (totalPages > 1)
+    {
+        <nav class="mt-5"
+             aria-label="Courses pagination">
+
+            <ul class="pagination justify-content-center">
+
+
+                <!-- Previous -->
+                @if (currentPage > 1)
+                {
+                    <li class="page-item">
+
+                        <a class="page-link"
+                           asp-action="Index"
+                           asp-route-search="@search"
+                           asp-route-categoryId="@categoryId"
+                           asp-route-page="@(currentPage - 1)">
+
+                            <i class="bi bi-chevron-left"></i>
+                            Previous
+
+                        </a>
+
+                    </li>
+                }
+                else
+                {
+                    <li class="page-item disabled">
+
+                        <span class="page-link">
+
+                            <i class="bi bi-chevron-left"></i>
+                            Previous
+
+                        </span>
+
+                    </li>
+                }
+
+
+                <!-- Page Numbers -->
+                @for (int i = 1; i <= totalPages; i++)
+                {
+                    if (i == currentPage)
+                    {
+                        <li class="page-item active">
+
+                            <span class="page-link">
+                                @i
+                            </span>
+
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="page-item">
+
+                            <a class="page-link"
+                               asp-action="Index"
+                               asp-route-search="@search"
+                               asp-route-categoryId="@categoryId"
+                               asp-route-page="@i">
+
+                                @i
+
+                            </a>
+
+                        </li>
+                    }
+                }
+
+
+                <!-- Next -->
+                @if (currentPage < totalPages)
+                {
+                    <li class="page-item">
+
+                        <a class="page-link"
+                           asp-action="Index"
+                           asp-route-search="@search"
+                           asp-route-categoryId="@categoryId"
+                           asp-route-page="@(currentPage + 1)">
+
+                            Next
+                            <i class="bi bi-chevron-right"></i>
+
+                        </a>
+
+                    </li>
+                }
+                else
+                {
+                    <li class="page-item disabled">
+
+                        <span class="page-link">
+
+                            Next
+                            <i class="bi bi-chevron-right"></i>
+
+                        </span>
+
+                    </li>
+                }
+
+            </ul>
+
+        </nav>
+    }
+
+</div>

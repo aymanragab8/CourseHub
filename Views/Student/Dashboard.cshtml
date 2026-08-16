@@ -1,0 +1,97 @@
+﻿@{
+    ViewData["Title"] = "Student Dashboard";
+}
+
+<div class="container py-5">
+
+    <!-- Header -->
+
+    <div class="mb-5">
+
+        <h1 class="coursehub-admin-title">
+            Welcome, @ViewBag.StudentName 👋
+        </h1>
+
+        <p class="text-muted fs-5">
+            Manage your learning journey from here.
+        </p>
+
+    </div>
+
+
+    <!-- Main Actions -->
+
+    <div class="row g-4">
+
+        <!-- Browse Courses -->
+
+        <div class="col-md-6">
+
+            <div class="coursehub-stat-card h-100">
+
+                <div class="card-body p-4">
+
+                    <i class="bi bi-search coursehub-stat-icon"></i>
+
+                    <h4 class="coursehub-admin-title mt-3">
+                        Browse Courses
+                    </h4>
+
+                    <p class="text-muted">
+                        Explore available courses and find
+                        something new to learn.
+                    </p>
+
+                    <a asp-controller="Courses"
+                       asp-action="Index"
+                       class="btn btn-primary">
+
+                        <i class="bi bi-search me-1"></i>
+                        Browse Courses
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- My Courses -->
+
+        <div class="col-md-6">
+
+            <div class="coursehub-stat-card h-100">
+
+                <div class="card-body p-4">
+
+                    <i class="bi bi-mortarboard coursehub-stat-icon"></i>
+
+                    <h4 class="coursehub-admin-title mt-3">
+                        My Courses
+                    </h4>
+
+                    <p class="text-muted">
+                        View and manage the courses you are
+                        currently enrolled in.
+                    </p>
+
+                    <a asp-controller="Enrollment"
+                       asp-action="MyCourses"
+                       class="btn btn-success">
+
+                        <i class="bi bi-book me-1"></i>
+                        My Courses
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

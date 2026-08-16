@@ -1,0 +1,115 @@
+﻿@model IEnumerable<CourseHub.Models.Course>
+
+@{
+    ViewData["Title"] = "My Courses";
+}
+
+<div class="container py-5">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <div>
+
+            <h1 class="coursehub-admin-title mb-1">
+                My Courses
+            </h1>
+
+            <p class="text-muted">
+                Manage the courses you created.
+            </p>
+
+        </div>
+
+        <a asp-controller="Courses"
+           asp-action="Create"
+           class="btn btn-primary">
+
+            <i class="bi bi-plus-circle me-1"></i>
+            Create Course
+
+        </a>
+
+    </div>
+
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info">
+
+            You haven't created any courses yet.
+
+        </div>
+    }
+    else
+    {
+        <div class="row g-4">
+
+            @foreach (var course in Model)
+            {
+                var imageUrl =
+                    string.IsNullOrEmpty(course.ImageUrl)
+                    ? "/images/courses/default-course.jpg"
+                    : course.ImageUrl;
+
+                <div class="col-md-6 col-lg-4">
+
+                    <div class="card course-card h-100 border-0 shadow-sm">
+
+                        <!-- Course Image -->
+
+                        <img src="@imageUrl"
+                             class="card-img-top"
+                             alt="@course.Title" />
+
+
+                        <!-- Card Body -->
+
+                        <div class="card-body">
+
+                            <span class="badge bg-primary mb-2">
+                                @course.Category?.Name
+                            </span>
+
+                            <h5 class="card-title">
+                                @course.Title
+                            </h5>
+
+                            <p class="card-text text-muted">
+
+                                @(course.Description?.Length > 100
+                                    ? course.Description[..100] + "..."
+                                    : course.Description)
+
+                            </p>
+
+                            <h5 class="course-price">
+                                $@course.Price.ToString("0.00")
+                            </h5>
+
+                        </div>
+
+
+                        <!-- Footer -->
+
+                        <div class="card-footer bg-white border-0">
+
+                            <a asp-controller="Courses"
+                               asp-action="Details"
+                               asp-route-id="@course.Id"
+                               class="btn btn-outline-primary w-100">
+
+                                View Course
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            }
+
+        </div>
+    }
+
+</div>

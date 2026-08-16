@@ -1,0 +1,163 @@
+﻿@model IEnumerable<CourseHub.ViewModels.MyEnrollmentViewModel>
+
+@{
+    ViewData["Title"] = "My Courses";
+}
+
+<div class="container py-5">
+
+    <!-- Header -->
+
+    <div class="d-flex justify-content-between align-items-center mb-5">
+
+        <div>
+
+            <h1 class="coursehub-admin-title mb-2">
+                My Courses
+            </h1>
+
+            <p class="text-muted mb-0">
+                Courses you are currently enrolled in.
+            </p>
+
+        </div>
+
+        <a asp-controller="Courses"
+           asp-action="Index"
+           class="btn btn-primary">
+
+            <i class="bi bi-search me-1"></i>
+            Browse Courses
+
+        </a>
+
+    </div>
+
+
+    <!-- Courses -->
+    @if (Model != null && Model.Any())
+    {
+        <div class="row g-4">
+
+            @foreach (var course in Model)
+            {
+                <div class="col-md-6 col-lg-4">
+
+                    <div class="card course-card h-100 border-0 shadow-sm">
+
+                        <!-- Image -->
+                        @if (!string.IsNullOrEmpty(course.ImageUrl))
+                        {
+                            <img src="@course.ImageUrl"
+                                 class="card-img-top"
+                                 alt="@course.CourseTitle" />
+                        }
+                        else
+                        {
+                            <div class="bg-light d-flex align-items-center justify-content-center"
+                                 style="height: 200px;">
+
+                                <i class="bi bi-book fs-1 coursehub-empty-state"></i>
+
+                            </div>
+                        }
+
+
+                        <!-- Content -->
+
+                        <div class="card-body p-4">
+
+                            <h4 class="card-title">
+                                @course.CourseTitle
+                            </h4>
+
+                            <p class="text-muted mb-2">
+
+                                <i class="bi bi-person me-1"></i>
+
+                                @course.InstructorName
+
+                            </p>
+
+                            <p class="text-muted small">
+
+                                <i class="bi bi-calendar me-1"></i>
+
+                                Enrolled:
+                                @course.EnrolledAt.ToString("MMM dd, yyyy")
+
+                            </p>
+
+
+                            <div class="d-flex gap-2 mt-4">
+
+                                <a asp-controller="Courses"
+                                   asp-action="Details"
+                                   asp-route-id="@course.CourseId"
+                                   class="btn btn-primary">
+
+                                    View Course
+
+                                </a>
+
+
+                                <form asp-controller="Enrollment"
+                                      asp-action="Unenroll"
+                                      method="post">
+
+                                    <input type="hidden"
+                                           name="courseId"
+                                           value="@course.CourseId" />
+
+                                    <button type="submit"
+                                            class="btn btn-outline-danger">
+
+                                        Unenroll
+
+                                    </button>
+
+                                </form>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            }
+
+        </div>
+    }
+    else
+    {
+        <!-- Empty State -->
+
+        <div class="coursehub-content-card">
+
+            <div class="card-body text-center py-5">
+
+                <i class="bi bi-book fs-1 coursehub-empty-state"></i>
+
+                <h3 class="coursehub-admin-title mt-3">
+                    No Courses Yet
+                </h3>
+
+                <p class="text-muted">
+                    You haven't enrolled in any courses yet.
+                </p>
+
+                <a asp-controller="Courses"
+                   asp-action="Index"
+                   class="btn btn-primary">
+
+                    Browse Courses
+
+                </a>
+
+            </div>
+
+        </div>
+    }
+
+</div>

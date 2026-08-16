@@ -1,0 +1,320 @@
+﻿
+@{
+    ViewData["Title"] = "Home";
+}
+
+<!-- ========================= -->
+<!-- HERO -->
+<!-- ========================= -->
+
+<section class="coursehub-hero">
+
+    <div class="container">
+
+        <div class="row align-items-center min-vh-75">
+
+            <!-- Hero Content -->
+
+            <div class="col-lg-7 text-center text-lg-start">
+
+                <span class="coursehub-hero-badge">
+
+                    <i class="bi bi-stars me-1"></i>
+
+                    Learn. Build. Grow.
+
+                </span>
+
+                <h1 class="coursehub-hero-title mt-3">
+
+                    Learn Without
+                    <span>Limits.</span>
+
+                </h1>
+
+                <p class="coursehub-hero-description">
+
+                    Discover high-quality courses, build new skills,
+                    and take the next step toward your career goals.
+
+                </p>
+
+                <div class="d-flex flex-column flex-sm-row
+                    justify-content-center justify-content-lg-start
+                    gap-3 mt-4">
+
+                    <a asp-controller="Courses"
+                       asp-action="Index"
+                       class="btn btn-primary btn-lg px-4">
+
+                        <i class="bi bi-book me-2"></i>
+
+                        Explore Courses
+
+                    </a>
+
+                    @if (User.Identity?.IsAuthenticated != true)
+                    {
+                        <a asp-controller="Account"
+                           asp-action="Register"
+                           class="btn btn-outline-primary btn-lg px-4">
+
+                            Get Started
+
+                            <i class="bi bi-arrow-right ms-2"></i>
+
+                        </a>
+                    }
+
+                </div>
+
+            </div>
+
+
+            <!-- Hero Visual -->
+
+            <div class="col-lg-5 mt-5 mt-lg-0">
+
+                <div class="coursehub-hero-card">
+
+                    <div class="coursehub-hero-icon">
+
+                        <i class="bi bi-mortarboard-fill"></i>
+
+                    </div>
+
+                    <h3>
+
+                        Start Learning Today
+
+                    </h3>
+
+                    <p>
+
+                        Find courses that match your interests
+                        and grow your skills at your own pace.
+
+                    </p>
+
+                    <div class="coursehub-hero-stats">
+
+                        <div>
+
+                            <strong>
+                                <i class="bi bi-play-circle"></i>
+                            </strong>
+
+                            <span>
+                                Learn
+                            </span>
+
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                <i class="bi bi-code-slash"></i>
+                            </strong>
+
+                            <span>
+                                Build
+                            </span>
+
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                <i class="bi bi-graph-up-arrow"></i>
+                            </strong>
+
+                            <span>
+                                Grow
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ========================= -->
+<!-- FEATURES -->
+<!-- ========================= -->
+
+<section class="coursehub-features">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <span class="coursehub-section-label">
+
+                WHY COURSEHUB
+
+            </span>
+
+            <h2 class="coursehub-section-title mt-2">
+
+                Everything You Need To Learn
+
+            </h2>
+
+            <p class="coursehub-section-description">
+
+                A simple and modern learning experience
+                designed to help you improve your skills.
+
+            </p>
+
+        </div>
+
+
+        <div class="row g-4">
+
+            <!-- Feature 1 -->
+
+            <div class="col-md-4">
+
+                <div class="coursehub-feature-card">
+
+                    <div class="coursehub-feature-icon">
+
+                        <i class="bi bi-book-half"></i>
+
+                    </div>
+
+                    <h4>
+
+                        Quality Courses
+
+                    </h4>
+
+                    <p>
+
+                        Explore a variety of courses designed
+                        to help you learn practical and valuable skills.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Feature 2 -->
+
+            <div class="col-md-4">
+
+                <div class="coursehub-feature-card">
+
+                    <div class="coursehub-feature-icon">
+
+                        <i class="bi bi-person-check-fill"></i>
+
+                    </div>
+
+                    <h4>
+
+                        Learn From Instructors
+
+                    </h4>
+
+                    <p>
+
+                        Learn from instructors who share their
+                        knowledge and experience through structured courses.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Feature 3 -->
+
+            <div class="col-md-4">
+
+                <div class="coursehub-feature-card">
+
+                    <div class="coursehub-feature-icon">
+
+                        <i class="bi bi-rocket-takeoff-fill"></i>
+
+                    </div>
+
+                    <h4>
+
+                        Grow Your Skills
+
+                    </h4>
+
+                    <p>
+
+                        Build your knowledge, improve your abilities,
+                        and move closer to your career goals.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ========================= -->
+<!-- CTA -->
+<!-- ========================= -->
+
+<section class="coursehub-cta">
+
+    <div class="container">
+
+        <div class="coursehub-cta-content text-center">
+
+            <i class="bi bi-lightbulb-fill coursehub-cta-icon"></i>
+
+            <h2>
+
+                Ready to Start Learning?
+
+            </h2>
+
+            <p>
+
+                Explore our courses and start building
+                the skills that can shape your future.
+
+            </p>
+
+            <a asp-controller="Courses"
+               asp-action="Index"
+               class="btn btn-light btn-lg px-4">
+
+                Explore Courses
+
+                <i class="bi bi-arrow-right ms-2"></i>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+

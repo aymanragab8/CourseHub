@@ -1,0 +1,95 @@
+﻿@model IEnumerable<CourseHub.ViewModels.InstructorStudentViewModel>
+
+@{
+    ViewData["Title"] = "Students";
+}
+
+<div class="container py-5">
+
+    <div class="mb-4">
+
+        <h1 class="coursehub-admin-title">
+            Students
+        </h1>
+
+        <p class="text-muted">
+            Students enrolled in your courses.
+        </p>
+
+    </div>
+
+
+    @if (!Model.Any())
+    {
+        <div class="coursehub-content-card">
+
+            <div class="card-body text-center p-5">
+
+                <i class="bi bi-people fs-1 coursehub-empty-state"></i>
+
+                <h3 class="coursehub-admin-title mt-3">
+                    No Students Yet
+                </h3>
+
+                <p class="text-muted">
+                    No students have enrolled in your courses yet.
+                </p>
+
+            </div>
+
+        </div>
+    }
+    else
+    {
+        <div class="coursehub-content-card">
+
+            <div class="table-responsive">
+
+                <table class="table table-hover mb-0">
+
+                    <thead>
+                        <tr>
+                            <th>Student</th>
+                            <th>Email</th>
+                            <th>Courses</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        @foreach (var student in Model)
+                        {
+                            <tr>
+
+                                <td>
+                                    <strong>@student.StudentName</strong>
+                                </td>
+
+                                <td>
+                                    @student.Email
+                                </td>
+
+                                <td>
+
+                                    @foreach (var course in student.Courses)
+                                    {
+                                        <span class="badge bg-primary me-1 mb-1">
+                                            @course
+                                        </span>
+                                    }
+
+                                </td>
+
+                            </tr>
+                        }
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+    }
+
+</div>
